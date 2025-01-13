@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url('https://i.imgur.com/ZfX8F4u.jpg'); /* Nền Tết */
+            background-image: url('https://i.imgur.com/ZfX8F4u.jpg');
             background-size: cover;
             background-position: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -52,7 +52,6 @@
             margin-top: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-        /* Hiệu ứng pháo hoa */
         .fireworks {
             position: fixed;
             top: 0;
@@ -64,27 +63,26 @@
         }
     </style>
 </head>
-<body>
+<body class="loading">
     <div class="overlay"></div>
-
     <canvas class="fireworks"></canvas>
-
     <div class="content">
         <h1>LIÊN HOAN TẤT NIÊN LÀNG VIỆT</h1>
         <p>THỜI GIAN: 18H00 NGÀY 20/01/2024</p>
         <p>ĐỊA ĐIỂM: NHÀ VIỆT NAM SỐ 2251 R STREET NW 20008, WASHINGTON DC</p>
-        
         <div class="separator">
             <a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtHa0WK-v6_25lopbmVNQvjdl6CJak8scbmkE0DusAcaoA1GIWXO2LGWwH6-QVjvui8c9lLHdvpsWW9ggNziPXcAoKTyCD0UAe7aPogwbKBZnf5FxVvPXPt2x1Wp4mFexpXczJWc8IOzuSEafNIuDY3LyjAw_Aap19Td-rTqgai4C29TeUTtPmi4Hez1kn/s765/anh-tet-careerbuilder-4.jpg">
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtHa0WK-v6_25lopbmVNQvjdl6CJak8scbmkE0DusAcaoA1GIWXO2LGWwH6-QVjvui8c9lLHdvpsWW9ggNziPXcAoKTyCD0UAe7aPogwbKBZnf5FxVvPXPt2x1Wp4mFexpXczJWc8IOzuSEafNIuDY3LyjAw_Aap19Td-rTqgai4C29TeUTtPmi4Hez1kn/s765/anh-tet-careerbuilder-4.jpg" alt="Ảnh Tết">
             </a>
         </div>
-
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe61p_IOL5A7HDCCOOSvp0SsgjmRe2bnSs54Sq3ilpRKqc6sw/viewform?embedded=true">Loading…</iframe>
-        
         <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRV6i4kdoR7e7VDF_CsvqEPDAtVfavlmjohG23iobsN3ldCXfI9zcPZeTqOlAJgRcRVukxVioS2MA77/pubhtml?gid=2109639450&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
     </div>
-
+    <script type='text/javascript'>
+        window.setTimeout(function() {
+            document.body.className = document.body.className.replace('loading', '');
+        }, 10);
+    </script>
     <script>
         const canvas = document.querySelector('.fireworks');
         const ctx = canvas.getContext('2d');
