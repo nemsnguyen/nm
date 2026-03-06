@@ -1,1 +1,14 @@
+body{
+font-family:Arial;
+max-width:800px;
+margin:auto;
+}
 
+.post{
+border-bottom:1px solid #ddd;
+padding:20px;
+}
+
+.post img{
+margin-top:10px;
+}
