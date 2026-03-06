@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin</title>
+</head>
 
+<body>
+
+<h2>Đăng bài mới</h2>
+
+<input id="title" placeholder="Tiêu đề"><br><br>
+<textarea id="summary" placeholder="Tóm tắt"></textarea><br><br>
+<textarea id="content" placeholder="Nội dung"></textarea><br><br>
+
+<input type="file" id="image"><br><br>
+
+<button onclick="publish()">Đăng bài</button>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getFirestore, collection, addDoc } 
+from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+import { getStorage, ref, uploadBytes, getDownloadURL } 
+from "https://www.gstatic.com/firebasejs/12.10.0/firebase-storage.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyB2BxJPUxWPoUle47DEmSqzB8l6tdUyIoI",
+authDomain: "tinlangviet.firebaseapp.com",
+projectId: "tinlangviet",
+storageBucket: "tinlangviet.firebasestorage.app",
+messagingSenderId: "895323284131",
+appId: "1:895323284131:web:89eb582fa1e9d091525516"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+window.publish = async function(){
+
+let title = document.getElementById("title").value;
+let summary = document.getElementById("summary").value;
+let content = document.getElementById("content").value;
+
+let file = document.getElementById("image").files[0];
+
+const storageRef = ref(storage,"images/"+file.name);
+
+await uploadBytes(storageRef,file);
+
+const imageURL = await getDownloadURL(storageRef);
+
+await addDoc(collection(db,"posts"),{
+
+title:title,
+summary:summary,
+content:content,
+image:imageURL,
+date:Date.now()
+
+});
+
+alert("Đăng bài thành công");
+
+}
+
+</script>
+
+</body>
+</html>
