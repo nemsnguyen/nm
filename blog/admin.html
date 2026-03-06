@@ -46,13 +46,20 @@ let title = document.getElementById("title").value;
 let summary = document.getElementById("summary").value;
 let content = document.getElementById("content").value;
 
-let file = document.getElementById("image").files[0];
+let fileInput = document.getElementById("image");
+let file = fileInput.files[0];
 
-const storageRef = ref(storage,"images/"+file.name);
+let imageURL = "";
+
+if(file){
+
+const storageRef = ref(storage,"images/"+Date.now()+"_"+file.name);
 
 await uploadBytes(storageRef,file);
 
-const imageURL = await getDownloadURL(storageRef);
+imageURL = await getDownloadURL(storageRef);
+
+}
 
 await addDoc(collection(db,"posts"),{
 
@@ -67,7 +74,6 @@ date:Date.now()
 alert("Đăng bài thành công");
 
 }
-
 </script>
 
 </body>
