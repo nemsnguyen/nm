@@ -1,30 +1,84 @@
 <!DOCTYPE html>
+
 <html>
 <head>
+
 <meta charset="UTF-8">
-<title>Admin</title>
+<title>Admin - Tin tức làng Việt</title>
+
+<link href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css" rel="stylesheet">
+
+<style>
+
+body{
+font-family:Arial;
+max-width:800px;
+margin:auto;
+padding:20px;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+}
+
+button{
+padding:10px 20px;
+background:#c40000;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+#editor{
+height:300px;
+margin-bottom:20px;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h2>Đăng bài mới</h2>
+<h2>Admin - Tin tức làng Việt</h2>
 
-<input id="title" placeholder="Tiêu đề"><br><br>
-<textarea id="summary" placeholder="Tóm tắt"></textarea><br><br>
-<textarea id="content" placeholder="Nội dung"></textarea><br><br>
+<h3>Login</h3>
 
-<input type="file" id="image"><br><br>
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<hr>
+
+<h3>Đăng bài</h3>
+
+<input id="title" placeholder="Tiêu đề">
+
+<textarea id="summary" placeholder="Tóm tắt"></textarea>
+
+<input type="file" id="image">
+
+<div id="editor"></div>
 
 <button onclick="publish()">Đăng bài</button>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
 
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-import { getFirestore, collection, addDoc } 
+
+import { getFirestore, collection, addDoc }
 from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
-import { getStorage, ref, uploadBytes, getDownloadURL } 
+import { getStorage, ref, uploadBytes, getDownloadURL }
 from "https://www.gstatic.com/firebasejs/12.10.0/firebase-storage.js";
+
+import { getAuth, signInWithEmailAndPassword }
+from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
 
 const firebaseConfig = {
 apiKey: "AIzaSyB2BxJPUxWPoUle47DEmSqzB8l6tdUyIoI",
@@ -38,35 +92,69 @@ appId: "1:895323284131:web:89eb582fa1e9d091525516"
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
+
 const storage = getStorage(app);
+
+const auth = getAuth(app);
+
+const quill = new Quill('#editor',{
+theme:'snow'
+});
+
+window.login = function(){
+
+let email=document.getElementById("email").value;
+
+let password=document.getElementById("password").value;
+
+signInWithEmailAndPassword(auth,email,password)
+
+.then(()=>{
+
+alert("Login thành công");
+
+})
+
+.catch((error)=>{
+
+alert(error.message);
+
+});
+
+}
 
 window.publish = async function(){
 
-let title = document.getElementById("title").value;
-let summary = document.getElementById("summary").value;
-let content = document.getElementById("content").value;
+let title=document.getElementById("title").value;
 
-let fileInput = document.getElementById("image");
-let file = fileInput.files[0];
+let summary=document.getElementById("summary").value;
 
-let imageURL = "";
+let content=quill.root.innerHTML;
+
+let file=document.getElementById("image").files[0];
+
+let imageURL="";
 
 if(file){
 
-const storageRef = ref(storage,"images/"+Date.now()+"_"+file.name);
+const storageRef=ref(storage,"images/"+Date.now()+"_"+file.name);
 
 await uploadBytes(storageRef,file);
 
-imageURL = await getDownloadURL(storageRef);
+imageURL=await getDownloadURL(storageRef);
 
 }
 
 await addDoc(collection(db,"posts"),{
 
 title:title,
+
 summary:summary,
+
 content:content,
+
 image:imageURL,
+
 date:Date.now()
 
 });
@@ -74,6 +162,7 @@ date:Date.now()
 alert("Đăng bài thành công");
 
 }
+
 </script>
 
 </body>
