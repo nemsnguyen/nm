@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bài viết</title>
+</head>
 
+<body>
+
+<h1 id="title"></h1>
+<img id="image" width="500">
+<div id="content"></div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getFirestore, doc, getDoc } 
+from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyB2BxJPUxWPoUle47DEmSqzB8l6tdUyIoI",
+authDomain: "tinlangviet.firebaseapp.com",
+projectId: "tinlangviet",
+storageBucket: "tinlangviet.firebasestorage.app",
+messagingSenderId: "895323284131",
+appId: "1:895323284131:web:89eb582fa1e9d091525516"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const docRef = doc(db,"posts",id);
+const snap = await getDoc(docRef);
+
+const post = snap.data();
+
+document.getElementById("title").innerText = post.title;
+document.getElementById("image").src = post.image;
+document.getElementById("content").innerHTML = post.content;
+
+</script>
+
+</body>
+</html>
