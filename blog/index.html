@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -8,9 +9,14 @@
 
 <body>
 
+<header>
 <h1>Tin tức làng Việt</h1>
+<p>Tin tức cộng đồng người Việt</p>
+</header>
 
+<div class="container">
 <div id="posts"></div>
+</div>
 
 <script type="module">
 
@@ -33,23 +39,23 @@ const db = getFirestore(app);
 const q = query(collection(db,"posts"), orderBy("date","desc"));
 const snapshot = await getDocs(q);
 
-let html = "";
+let html="";
 
 snapshot.forEach(doc=>{
-let p = doc.data();
+let p=doc.data();
 
-html += `
-<div class="post">
+html+=`
+<div class="news">
 <a href="post.html?id=${doc.id}">
+<img src="${p.image}">
 <h2>${p.title}</h2>
-<img src="${p.image}" width="300">
 <p>${p.summary}</p>
 </a>
 </div>
 `;
 });
 
-document.getElementById("posts").innerHTML = html;
+document.getElementById("posts").innerHTML=html;
 
 </script>
 
