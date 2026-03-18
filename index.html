@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en"  x-data="{ open: false }">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <!-- Favicon icon-->
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon-16x16.png" />
+<link rel="manifest" href="./assets/site.webmanifest" />
+<link rel="mask-icon" href="data:image/svg+xml,%3csvg%20width='150'%20height='150'%20viewBox='0%200%20150%20150'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M51.4444%205.50841L27.7165%2018.1757C25.7846%2019.207%2024.5781%2021.2187%2024.5781%2023.4086V115.643C24.5781%20117.74%2025.6853%20119.681%2027.4902%20120.749L72.3066%20147.256C74.2643%20148.414%2076.7118%20148.351%2078.6069%20147.093L100.012%20132.885C103.591%20130.51%20103.537%20125.237%2099.911%20122.935L62.923%2099.4559C61.2086%2098.3677%2060.17%2096.4782%2060.17%2094.4476V10.7414C60.17%206.26214%2055.3958%203.39893%2051.4444%205.50841Z'%20fill='black'/%3e%3cpath%20d='M116.702%2058.4275L81.1101%2036.1826C77.1591%2033.7132%2072.0342%2036.5537%2072.0342%2041.2129V66.7514C72.0342%2068.892%2073.1875%2070.8666%2075.0521%2071.9182L85.9806%2078.0818C87.8452%2079.1334%2088.9986%2081.108%2088.9986%2083.2487V95.3278C88.9986%2097.2771%2089.9563%2099.1021%2091.5605%20100.21L110.188%20113.069C114.123%20115.785%20119.49%20112.968%20119.49%20108.187V63.4578C119.49%2061.4126%20118.436%2059.5115%20116.702%2058.4275Z'%20fill='black'/%3e%3c/svg%3e" color="#8b3dff" />
+<link rel="shortcut icon" href="./assets/favicon.ico" />
+<meta name="msapplication-TileColor" content="#8b3dff" />
+<meta name="msapplication-config" content="data:text/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPGJyb3dzZXJjb25maWc+CiAgICA8bXNhcHBsaWNhdGlvbj4KCQk8dGlsZT4KCgkJCTxzcXVhcmUxNTB4MTUwbG9nbyBzcmM9ImltYWdlcy90aWxlcy9ibG9jay1tc3RpbGUtbWVkaXVtLnBuZyIvPgoKCQkJPFRpbGVDb2xvcj4jOGIzZGZmPC9UaWxlQ29sb3I+CgkJPC90aWxlPgoJPC9tc2FwcGxpY2F0aW9uPgo8L2Jyb3dzZXJjb25maWc+" />
+
+  <title>Block - Tailwind CSS Templates</title>
+
+  <!-- Tabler Icons -->
+  
+
+
+  <script type="module" crossorigin src="./assets/js/index.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/css/index.css">
+</head>
+
+<body class="">
+<!-- Navbar -->
+    <nav class="bg-white border-b border-gray-200 fixed top-0 w-full z-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+          <!-- Logo -->
+          <a href="index.html" class="text-xl font-semibold text-gray-900">
+            <img src="./assets/images/logo.svg" alt="">
+          </a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-6">
+           <a href="#home" class="text-gray-700 hover:text-purple-500 scroll-smooth" onclick="scrollToSection('home', event)">Home</a>
+           
+            <a href="#features" class="text-gray-700 hover:text-purple-500 scroll-smooth" onclick="scrollToSection('features', event)">Features</a>
+           
+          </div>
+
+          <!-- Right side icons -->
+          <div class="hidden lg:flex items-center space-x-4">
+          <a href="#" class="btn btn-outline-white">Login</a>
+          <a href="#" class="btn btn-primary">Create Account</a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            class="md:hidden text-gray-700 focus:outline-none"
+            @click="open = !open"
+          >
+            <svg
+              x-show="!open"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg
+              x-show="open"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div x-show="open" class="md:hidden bg-white border-t border-gray-200">
+        <div class="space-y-1 px-4 py-3">
+            <a href="#home" class="block text-gray-700 hover:text-purple-500 py-2 scroll-smooth" onclick="scrollToSection('home', event)">Home</a>
+            <a href="#features" class="block text-gray-700 hover:text-purple-500 py-2 scroll-smooth" onclick="scrollToSection('features', event)">Features</a>
+              
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-16 ">
+     <section class="lg:py-24 py-12" id="home">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+      <div class="grid lg:grid-cols-12 grid-cols-1 gap-8 items-center">
+        <div class=" lg:col-start-1 lg:col-end-6 col-span-12 text-center sm:text-left">
+          <span class="badge bg-white border border-purple-500 rounded-full text-purple-500 px-4 ">New: Our Live collaborative just landed</span>
+
+         <div class="my-6">
+          <h1 class="lg:text-[3.4rem] text-3xl lg:leading-14 mb-4 font-bold ">Build your next project even faster.</h1>
+          <p class="text-lg ">Block makes it easy to get your most important work done. Increase efficiency to deliver result & hit your goal on every project.</p>
+          <div class="my-6 gap-3 flex justify-center sm:justify-start">
+            <a href="#" class="btn btn-primary">Try for Free</a>
+            <a href="#" class="btn btn-outline-white">Book a Demo</a>
+          </div>
+        </div>
+          <div class="flex md:flex-row flex-col items-center  gap-6">
+            <div class="flex items-center md:justify-center gap-3">
+              <span class="h-9 w-9 border border-gray-200 rounded-lg flex items-center justify-center px-3 py-2">
+                <i class="ti ti-credit-card text-purple-500 text-xl "></i>
+              </span>
+              <span>No credit card required</span>
+            </div>
+            <div class="flex items-center  md:justify-center gap-3">
+            <span class="h-9 w-9 border border-gray-200 rounded-lg flex items-center justify-center px-3 py-2">
+              <i class="ti ti-cash-banknote text-purple-500 text-xl "></i>
+            </span>
+            <span>Free until upgrade</span></div>
+
+</div>
+        </div>
+        <div class="lg:col-start-7 lg:col-end-14 col-span-12">
+          <div class="relative">
+                        <div class="bg-gray-100 md:p-4 p-2 rounded-xl border border-gray-200 scene" data-relative-input="true">
+                           <div data-depth="0.09">
+                              <figure  >
+                                 <img src="./assets/images/app-screen-1.jpg" alt="landing" class="w-full rounded-xl shadow border border-gray-200" />
+                              </figure>
+                           </div>
+                        </div>
+                        <div class="absolute top-50 -mt-10 left-0 -ms-4 hidden lg:block">
+                           <div class="badge bg-cyan-500 text-white   rounded-full">Developer</div>
+                           <div class="absolute top-0 end-0 -mt-3 -mr-3">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M22.3722 2.21902C22.4794 2.32632 22.5515 2.46361 22.5791 2.61278C22.6067 2.76194 22.5884 2.91597 22.5267 3.05452L14.0412 22.1465C13.9819 22.28 13.8849 22.3933 13.7621 22.4725C13.6393 22.5517 13.4961 22.5933 13.35 22.5921C13.2039 22.591 13.0613 22.5473 12.9397 22.4662C12.8182 22.3852 12.7229 22.2704 12.6657 22.136L9.60416 14.987L2.45366 11.924C2.31974 11.8664 2.20552 11.771 2.12495 11.6496C2.04439 11.5281 2.00097 11.3857 2.00002 11.24C1.99906 11.0942 2.04061 10.9513 2.11958 10.8288C2.19854 10.7062 2.31151 10.6094 2.44466 10.55L21.5367 2.06452C21.675 2.00309 21.8287 1.98497 21.9776 2.01255C22.1265 2.04012 22.265 2.1121 22.3722 2.21902Z"
+                                    fill="#0DCAF0" />
+                              </svg>
+                           </div>
+                        </div>
+                        <div class="absolute bottom-50 mb-n10 left-0 hidden lg:block">
+                           <div class="badge bg-green-500 text-white  rounded-full">Manager</div>
+                           <div class="absolute top-0 end-0 -mt-3 -mr-3">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M22.3722 2.21902C22.4794 2.32632 22.5515 2.46361 22.5791 2.61278C22.6067 2.76194 22.5884 2.91597 22.5267 3.05452L14.0412 22.1465C13.9819 22.28 13.8849 22.3933 13.7621 22.4725C13.6393 22.5517 13.4961 22.5932 13.35 22.5921C13.2039 22.591 13.0613 22.5473 12.9397 22.4662C12.8182 22.3852 12.7229 22.2704 12.6657 22.136L9.60416 14.987L2.45366 11.924C2.31974 11.8664 2.20552 11.771 2.12495 11.6496C2.04439 11.5281 2.00097 11.3857 2.00002 11.24C1.99906 11.0942 2.04061 10.9513 2.11958 10.8288C2.19854 10.7062 2.31151 10.6094 2.44466 10.55L21.5367 2.06452C21.675 2.00309 21.8287 1.98497 21.9776 2.01255C22.1265 2.04012 22.265 2.1121 22.3722 2.21902Z"
+                                    fill="#198754" />
+                              </svg>
+                           </div>
+                        </div>
+                        <div class="absolute bottom-0 me-n8 end-0 hidden lg:block">
+                           <div class="badge bg-red-500 text-white   rounded-full">Designer</div>
+                           <div class="absolute top-0 left-0 -mt-3 -ml-3">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M2.21946 2.21902C2.11223 2.32632 2.04007 2.46361 2.01248 2.61278C1.9849 2.76194 2.0032 2.91597 2.06496 3.05452L10.5505 22.1465C10.6097 22.28 10.7067 22.3933 10.8295 22.4725C10.9523 22.5517 11.0956 22.5933 11.2416 22.5921C11.3877 22.591 11.5303 22.5473 11.6519 22.4662C11.7735 22.3852 11.8687 22.2704 11.926 22.136L14.9875 14.987L22.138 11.924C22.2719 11.8664 22.3861 11.771 22.4667 11.6496C22.5472 11.5281 22.5906 11.3857 22.5916 11.24C22.5926 11.0942 22.551 10.9513 22.472 10.8288C22.3931 10.7062 22.2801 10.6094 22.147 10.55L3.05496 2.06452C2.91659 2.00309 2.76287 1.98497 2.61402 2.01255C2.46516 2.04012 2.32664 2.1121 2.21946 2.21902Z"
+                                    fill="#DC3545" />
+                              </svg>
+                           </div>
+                        </div>
+                        <div class="absolute top-0 mt-10 end-0 hidden lg:block">
+                           <div class="badge bg-purple-500 text-white   rounded-full">User</div>
+                           <div class="absolute top-0 left-0 -mt-3 -ml-3">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M2.21946 2.21902C2.11223 2.32632 2.04007 2.46361 2.01248 2.61278C1.9849 2.76194 2.0032 2.91597 2.06496 3.05452L10.5505 22.1465C10.6097 22.28 10.7067 22.3933 10.8295 22.4725C10.9523 22.5517 11.0956 22.5933 11.2416 22.5921C11.3877 22.591 11.5303 22.5473 11.6519 22.4662C11.7735 22.3852 11.8687 22.2704 11.926 22.136L14.9875 14.987L22.138 11.924C22.2719 11.8664 22.3861 11.771 22.4667 11.6496C22.5472 11.5281 22.5906 11.3857 22.5916 11.24C22.5926 11.0942 22.551 10.9513 22.472 10.8288C22.3931 10.7062 22.2801 10.6094 22.147 10.55L3.05496 2.06452C2.91659 2.00309 2.76287 1.98497 2.61402 2.01255C2.46516 2.04012 2.32664 2.1121 2.21946 2.21902Z"
+                                    fill="#8B3DFF" />
+                              </svg>
+                           </div>
+                        </div>
+                     </div>
+        </div>
+
+      </div>
+      </div>
+
+     </section>
+       <!--Trusted worldwide start-->
+         <div class="lg:py-16 py-12" >
+       
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+               <div class="grid grid-cols-12">
+                  <div class="col-span-12 lg:col-span-10 lg:col-start-2">
+                     <div class="text-center mb-8 lg:mb-10">
+                        <small class="uppercase tracking-wider font-semibold ">
+                           Trusted by
+                           <span class="font-bold text-gray-900">20,000+</span>
+                           organizations worldwide
+                        </small>
+                     </div>
+                     <div
+                        class="swiper-container swiper" style="--swiper-theme-color: #8B3DFF;"
+                        id="swiper-1"
+                        data-pagination-type=""
+                        data-speed="400"
+                        data-space-between="100"
+                        data-pagination="true"
+                        data-navigation="false"
+                        data-autoplay="true"
+                        data-autoplay-delay="3000"
+                        data-breakpoints='{"390": {"slidesPerView": 2}, "768": {"slidesPerView": 3}, "1024": {"slidesPerView": 5}}'>
+                        <div class="swiper-wrapper pb-12">
+                           <div class="swiper-slide">
+                              <figure class="text-center">
+                                 <img src="./assets/images/clients-logo-1.svg" alt="logo" />
+                              </figure>
+                           </div>
+                           <div class="swiper-slide">
+                              <figure class="text-center">
+                                 <img src="data:image/svg+xml,%3csvg%20fill='none'%20height='48'%20viewBox='0%200%20120%2048'%20width='120'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cclipPath%20id='a'%3e%3cpath%20d='m0%205h120v38.208h-120z'/%3e%3c/clipPath%3e%3cg%20clip-path='url(%23a)'%3e%3cpath%20d='m-.00097656%2035.8213v-23.226l20.54617656-7.59319%2011.1661%203.57229v31.2666l-11.1661%203.3661-20.54617656-7.3858%2020.54617656%202.4724v-27.0377l-13.39977%203.1267v18.3132l-7.14580353%203.1254zm53.59467656.1628c-3.2334%200-5.8239-1.0667-7.7699-3.1984-1.9465-2.1305-2.9186-4.9044-2.9186-8.3193%200-3.6688.9913-6.5958%202.9741-8.78%201.9827-2.1841%204.6818-3.2762%208.0955-3.2762%203.1496%200%205.6865%201.0607%207.6114%203.181%201.9248%202.1214%202.8872%204.8941%202.8872%208.3192%200%203.7219-.9871%206.664-2.959%208.8283-1.9719%202.1642-4.6113%203.2448-7.9207%203.2448zm.1906-21.1558c-2.3964%200-4.3418.8648-5.8373%202.593-1.4954%201.7283-2.2432%203.9981-2.2432%206.8075%200%202.8095.7297%205.0714%202.1872%206.784s3.3588%202.5689%205.7021%202.5689c2.502%200%204.475-.8165%205.9169-2.4495%201.4418-1.633%202.1636-3.9178%202.1636-6.8551%200-3.0121-.7007-5.3392-2.1003-6.983-1.3984-1.6432-3.3287-2.4664-5.789-2.4664zm20.194-3.6917c-1.4744%200-2.6992.5024-3.6845%201.4937-.9859.9908-1.4798%202.3403-1.4798%204.0475v2.6388h-2.7775v2.233h2.7775v14.0546h2.5966v-14.0546h6.3498v14.0546h2.5966v-14.0546h3.8111v-2.233h-3.8111v-2.5128c0-2.3005.9124-3.4468%202.7359-3.4468.6471%200%201.2223.1326%201.7307.4185v-2.3446c-.4661-.1905-1.0891-.2937-1.8838-.2937-1.4744%200-2.713.503-3.699%201.4937-.9865.9914-1.4798%202.341-1.4798%204.0475v2.6388h-6.3504v-2.5122c0-2.3011.9106-3.4474%202.7353-3.4474.6464%200%201.2217.1326%201.7307.4185v-2.3446c-.4668-.1923-1.103-.2949-1.8983-.2949zm13.9828%204.0403c-.2207.004-.44-.0361-.645-.1182-.2049-.082-.3914-.2042-.5484-.3594-.3286-.3184-.4932-.7206-.4932-1.2085%200-.4878.1646-.893.4932-1.2163.1558-.1573.3419-.2815.547-.3649s.425-.1244.6464-.1205c.477%200%20.8822.161%201.2169.4854.3347.3233.5005.7285.5005%201.2163.0037.2228-.0389.4438-.1251.6492-.0861.2054-.214.3907-.3754.5442-.3341.3281-.7399.4927-1.2169.4927zm1.2724%2020.4225h-2.6087v-16.2876h2.6081v16.2876zm14.8195-.7471c-1.25.7525-2.736%201.1294-4.453%201.1294-2.3222%200-4.1964-.7556-5.6219-2.2673-1.4256-1.5118-2.1408-3.4692-2.1408-5.8771%200-2.6834.7689-4.838%202.3066-6.4656%201.5383-1.6281%203.5898-2.4416%206.1561-2.4416%201.43%200%202.693.2653%203.785.796v2.6714c-1.208-.8479-2.502-1.2724-3.88-1.2724-1.6657%200-3.0309.597-4.0971%201.7897-1.0655%201.1934-1.598%202.7595-1.598%204.7%200%201.9092.5005%203.4149%201.5022%204.5178%201.0028%201.1024%202.3457%201.6535%204.0329%201.6535%201.42%200%202.758-.4722%204.008-1.4153zm15.946-6.7436h-11.5c.043%201.8127.53%203.2123%201.463%204.1988.934.9853%202.216%201.4786%203.85%201.4786%201.834%200%203.521-.6042%205.058-1.8133v2.4495c-1.431%201.039-3.324%201.5588-5.678%201.5588-2.302%200-4.11-.7393-5.424-2.2191-1.315-1.4798-1.973-3.5596-1.973-6.2431%200-2.5345.719-4.5998%202.155-6.196%201.437-1.5962%203.221-2.3934%205.352-2.3934%202.132%200%203.781.6892%204.947%202.0677s1.749%203.2925%201.749%205.742v1.3689zm-2.671-2.2113c-.011-1.5058-.374-2.6774-1.091-3.515-.715-.8382-1.71-1.2567-2.982-1.2567-1.23%200-2.274.4408-3.133%201.3206-.859.8804-1.389%202.031-1.59%203.4511h8.795z'%20fill='%2394a3b8'/%3e%3c/g%3e%3c/svg%3e" alt="logo" />
+                              </figure>
+                           </div>
+                           <div class="swiper-slide">
+                              <figure class="text-center">
+                                 <img src="data:image/svg+xml,%3csvg%20fill='none'%20height='48'%20viewBox='0%200%20120%2048'%20width='120'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cclipPath%20id='a'%3e%3cpath%20d='m0%209h120v29.088h-120z'/%3e%3c/clipPath%3e%3cg%20clip-path='url(%23a)'%3e%3cg%20fill='%2394a3b8'%3e%3cpath%20d='m118.256%2032.5128c.324-.0808.485-.2424.485-.5656%200-.404-.242-.5656-.727-.5656h-.808v2.02h.323v-.8888h.323l.566.8888h.323zm-.323-.2424h-.323v-.6464h.404c.242%200%20.485%200%20.485.3232s-.243.3232-.566.3232z'/%3e%3cpath%20d='m118.015%2030.4928c-1.051%200-1.939.808-1.939%201.9392%200%201.0504.808%201.9392%201.939%201.9392%201.05%200%201.939-.808%201.939-1.9392-.081-1.1312-.889-1.9392-1.939-1.9392zm0%203.5552c-.889%200-1.616-.7272-1.616-1.6968s.727-1.6968%201.616-1.6968%201.616.7272%201.616%201.6968-.727%201.6968-1.616%201.6968zm-117.968125-20.7656h4.524805v16.4024h8.24162v4.1208h-12.766425zm14.786425%206.6256h4.2824v13.8976h-4.2824zm2.1816-6.9488c1.3736%200%202.5048%201.1312%202.5048%202.5048s-1.1312%202.5048-2.5048%202.5048-2.5048-1.1312-2.5048-2.5048%201.0504-2.5048%202.5048-2.5048zm20.1192.3232h4.3632v12.2816l4.848-5.656h5.3328l-5.656%206.3832%205.4944%207.5144h-5.4136l-4.6056-6.868v6.868h-4.3632zm-15.5944%206.6256h4.1208v1.8584h.0808c.5656-1.1312%202.02-2.2624%204.1208-2.2624%204.3632%200%205.1712%202.9088%205.1712%206.6256v7.5952h-4.2824v-6.7872c0-1.616%200-3.7168-2.2624-3.7168s-2.5856%201.7776-2.5856%203.5552v6.868h-4.2824v-13.736z'/%3e%3cpath%20d='m60.7272%2025.2408c0-1.4544-1.1312-2.6664-2.6664-2.6664-1.8584%200-2.9088%201.2928-3.0704%202.6664zm3.636%206.1408c-1.3736%201.7776-3.636%202.7472-5.8984%202.7472-4.2824%200-7.7568-2.9088-7.7568-7.3528s3.4744-7.3528%207.7568-7.3528c4.04%200%206.5448%202.9088%206.5448%207.3528v1.3736h-10.0192c.3232%201.616%201.616%202.6664%203.232%202.6664%201.3736%200%202.3432-.7272%203.0704-1.6968zm9.6152-8.1608c-2.1816%200-3.4744%201.4544-3.4744%203.5552s1.2928%203.5552%203.4744%203.5552%203.4744-1.4544%203.4744-3.5552-1.2928-3.5552-3.4744-3.5552zm7.4336%2010.5848h-3.9592v-1.8584h-.0808c-.6464.9696-2.3432%202.1816-4.2824%202.1816-4.1208%200-6.868-2.9896-6.868-7.1912%200-3.8784%202.424-7.4336%206.3832-7.4336%201.7776%200%203.4744.4848%204.444%201.8584h.0808v-8.08h4.2824z'/%3e%3cpath%20d='m112.682%209h-24.8061c-1.212%200-2.1816.9696-2.1816%202.1008v24.8864c0%201.1312.9696%202.1008%202.1816%202.1008h24.8061c1.212%200%202.181-.9696%202.181-2.1008v-24.8864c0-1.1312-.969-2.1008-2.181-2.1008z'/%3e%3c/g%3e%3cpath%20d='m90.0576%2019.908h4.2824v13.8976h-4.2824zm2.1816-6.868c1.3736%200%202.5048%201.1312%202.5048%202.5048s-1.1312%202.5048-2.5048%202.5048-2.5048-1.1312-2.5048-2.5048c0-1.4544%201.1312-2.5048%202.5048-2.5048zm4.848%206.868h4.1208v1.8584h.081c.565-1.1312%202.02-2.2624%204.121-2.2624%204.363%200%205.171%202.9088%205.171%206.6256v7.5952h-4.283v-6.7872c0-1.616%200-3.7168-2.262-3.7168s-2.586%201.7776-2.586%203.5552v6.868h-4.282v-13.736z'%20fill='%23fff'/%3e%3c/g%3e%3c/svg%3e" alt="logo" />
+                              </figure>
+                           </div>
+                           <div class="swiper-slide">
+                              <figure class="text-center">
+                                 <img src="data:image/svg+xml,%3csvg%20fill='none'%20height='48'%20viewBox='0%200%20120%2048'%20width='120'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cclipPath%20id='a'%3e%3cpath%20d='m0%204h120v39.168h-120z'/%3e%3c/clipPath%3e%3cg%20clip-path='url(%23a)'%20fill='%2394a3b8'%3e%3cpath%20d='m14.7781%204.00345h1.0671c3.7047.08054%207.349%201.57047%209.9665%204.20805-.9665.98658-1.953%201.9329-2.8993%202.9195-1.4698-1.32889-3.2416-2.35574-5.1745-2.71816-2.8591-.60402-5.9396-.0604-8.3356%201.57047-2.61745%201.71139-4.38927%204.61079-4.77182%207.71139-.42282%203.0604.44296%206.2819%202.43624%208.6577%201.91276%202.3155%204.83218%203.7651%207.85238%203.8658%202.8188.1611%205.7584-.7047%207.8121-2.6778%201.6107-1.3893%202.3557-3.5034%202.5973-5.5571-3.3423%200-6.6846.0201-10.0269%200v-4.1476h14.0739c.7248%204.4496-.3222%209.463-3.7047%2012.6443-2.2551%202.255-5.3759%203.5839-8.5571%203.8456-3.0805.302-6.2617-.2819-9-1.7718-3.28188-1.7517-5.89933-4.7114-7.187916-8.1946-1.208054-3.2014-1.228188-6.8255-.100671-10.047%201.026847-2.9396%202.999997-5.53694%205.536917-7.34902%202.43624-1.79195%205.39597-2.77852%208.41607-2.95973z'/%3e%3cpath%20d='m95.5166%205.05045h4.3087v28.75165c-1.4295%200-2.8792.0202-4.3087-.0201.0201-9.5638%200-19.1477%200-28.73155z'/%3e%3cpath%20d='m38.9594%2015.0169c2.6578-.5034%205.537.0604%207.7316%201.651%201.9933%201.4094%203.3825%203.6242%203.8054%206.0403.5436%202.7986-.141%205.859-1.9531%208.0738-1.953%202.4765-5.1543%203.8054-8.2751%203.604-2.8591-.1611-5.6376-1.5906-7.3289-3.9262-1.9127-2.5771-2.3758-6.1208-1.3289-9.1409%201.047-3.2416%204.0068-5.7181%207.349-6.302zm.6041%203.8255c-1.0873.2819-2.094.906-2.8188%201.7919-1.953%202.3356-1.8322%206.141.3221%208.3155%201.2282%201.2483%203.0806%201.8322%204.792%201.4899%201.5906-.2819%202.9798-1.349%203.7449-2.7584%201.3289-2.396.9463-5.698-1.0872-7.5704-1.3087-1.2081-3.2215-1.7115-4.953-1.2685z'/%3e%3cpath%20d='m60.3017%2015.0169c3.0403-.5839%206.3625.2617%208.6376%202.396%203.7047%203.3221%204.1074%209.5436.9463%2013.3691-1.9127%202.4161-5.0134%203.7449-8.0738%203.604-2.9194-.0805-5.7986-1.5302-7.5302-3.9262-1.953-2.6376-2.3758-6.2617-1.2684-9.3422%201.1073-3.141%204.0067-5.537%207.2885-6.1007zm.6041%203.8255c-1.0873.2819-2.094.906-2.8188%201.7718-1.9329%202.2953-1.8524%206.0403.2215%208.2349%201.2281%201.3087%203.1409%201.953%204.9127%201.5906%201.5705-.302%202.9799-1.349%203.745-2.7584%201.3087-2.4161.9262-5.7181-1.1275-7.5906-1.3088-1.208-3.2215-1.6913-4.9329-1.2483z'/%3e%3cpath%20d='m78.4028%2016.1847c2.3154-1.4497%205.396-1.8524%207.8926-.604.7853.3422%201.4296.9261%202.0537%201.51.0202-.5436%200-1.1074.0202-1.6711%201.3489.0201%202.6979%200%204.0671.0201v17.7584c-.0202%202.6779-.7047%205.5168-2.6376%207.4698-2.1141%202.1544-5.3557%202.8188-8.2752%202.3758-3.1208-.463-5.8389-2.7382-7.047-5.6174%201.2081-.5839%202.4765-1.047%203.7249-1.5906.7047%201.651%202.1342%203.0604%203.9261%203.3825%201.792.3222%203.8658-.1208%205.0336-1.6107%201.2483-1.5302%201.2483-3.6242%201.1879-5.4966-.9262.906-1.9933%201.7114-3.2819%202.0134-2.7986.7852-5.8792-.1812-8.0335-2.0738-2.1745-1.8927-3.4631-4.8121-3.3423-7.7115.0604-3.2818%201.9128-6.4429%204.7114-8.1543zm4.1678%202.5772c-1.2282.2013-2.3758.8859-3.1611%201.8322-1.8926%202.255-1.8926%205.859.0202%208.0738%201.0872%201.3087%202.8389%202.0336%204.5302%201.8524%201.5906-.1611%203.0604-1.1678%203.8456-2.5571%201.3289-2.3557%201.1074-5.557-.6846-7.6107-1.1073-1.2685-2.8792-1.8927-4.5503-1.5906z'/%3e%3cpath%20d='m105%2017.2115c2.416-2.255%206.141-3.0201%209.242-1.8322%202.939%201.1074%204.812%203.906%205.758%206.7852-4.369%201.8121-8.718%203.6041-13.087%205.4161.604%201.1477%201.53%202.1947%202.778%202.6175%201.752.6242%203.846.4027%205.316-.7651.584-.443%201.047-1.0268%201.49-1.5906%201.107.745%202.214%201.4698%203.322%202.2148-1.571%202.3557-4.208%204.0067-7.047%204.2684-3.141.3826-6.483-.8255-8.517-3.2819-3.342-3.8657-3.02-10.349.745-13.8322zm2.154%203.7249c-.684.9865-.966%202.1946-.946%203.3825%202.92-1.208%205.839-2.4161%208.758-3.6443-.483-1.1275-1.651-1.8121-2.838-1.9933-1.913-.3423-3.906.6846-4.974%202.2551z'/%3e%3c/g%3e%3c/svg%3e" alt="logo" />
+                              </figure>
+                           </div>
+                           <div class="swiper-slide">
+                              <figure class="text-center">
+                                 <img src="data:image/svg+xml,%3csvg%20fill='none'%20height='48'%20viewBox='0%200%20120%2048'%20width='120'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cclipPath%20id='a'%3e%3cpath%20d='m0%2012h120v23.232h-120z'/%3e%3c/clipPath%3e%3cg%20clip-path='url(%23a)'%20fill='%2394a3b8'%3e%3cpath%20d='m9.39962%2015.6657c-1.40712%200-1.82926.6191-1.82926%201.9981v2.2796h3.77114l-.3659%203.7148h-3.40524v11.2289h-4.53096v-11.2289h-3.0394v-3.6867h3.0394v-2.2232c0-3.7711%201.5197-5.7411%205.71295-5.7411.87242%200%201.77295.0563%202.64535.1688v3.4897'/%3e%3cpath%20d='m11.6512%2026.9509c0-4.1651%201.97-7.3171%206.1351-7.3171%202.2514%200%203.6304%201.1539%204.3058%202.6173v-2.2796h4.3339v14.9437h-4.3621v-2.2514c-.6191%201.4353-2.0544%202.561-4.3058%202.561-4.1369%200-6.1351-3.1238-6.1351-7.3171m4.5591.0563c0%202.2233.8162%203.7149%202.9269%203.7149%201.8574%200%202.7861-1.3509%202.7861-3.4897v-1.5197c0-2.1389-.9569-3.4897-2.7861-3.4897-2.1107%200-2.9269%201.4634-2.9269%203.7148z'/%3e%3cpath%20d='m35.8253%2019.6338c1.7449%200%203.4334.3659%204.334%201.0132l-1.0131%203.2082c-.9288-.4503-1.97-.6754-3.0113-.6754-2.4484%200-3.5178%201.4071-3.5178%203.8274v.8724c0%202.4203%201.0694%203.8274%203.5178%203.8274%201.0413%200%202.0825-.2533%203.0113-.7036l1.0131%203.2083c-.9006.6191-2.561%201.0131-4.334%201.0131-5.3189%200-7.711-2.8424-7.711-7.4296v-.7036c0-4.5872%202.3921-7.4578%207.711-7.4578z'/%3e%3cpath%20d='m40.75%2027.9922v-1.3227c0-4.2496%202.4203-7.0357%207.3452-7.0357%204.6435%200%206.6979%202.8143%206.6979%206.9794v2.3921h-9.5121c.0844%202.0544%201.0131%202.955%203.5178%202.955%201.6322%200%203.2645-.3096%204.8124-.9006l.8161%203.0957c-1.182.6191-3.6304%201.0976-5.7974%201.0976-5.7411-.0282-7.8799-2.8706-7.8799-7.2608zm4.531-1.97h5.4596v-.3659c0-1.6322-.6473-2.9268-2.6454-2.9268-2.0263%200-2.8142%201.2946-2.8142%203.2927z'/%3e%3cpath%20d='m71.5661%2027.9077c0%204.1651-1.9981%207.3171-6.1632%207.3171-2.2514%200-3.8274-1.1257-4.4465-2.561v2.2514h-4.2777v-22.4578l4.531-.394v9.9907c.6472-1.3227%202.1107-2.3922%204.2214-2.3922%204.1369%200%206.1632%203.1239%206.1632%207.3171m-4.5591-.1126c0-2.1106-.8161-3.6866-2.9831-3.6866-1.8574%200-2.8424%201.3227-2.8424%203.4615v1.576c0%202.1388%201.0131%203.4615%202.8424%203.4615%202.167%200%202.9831-1.576%202.9831-3.6866z'/%3e%3cpath%20d='m73.0586%2027.7952v-.7599c0-4.3058%202.4484-7.4015%207.4296-7.4015%204.9813%200%207.4297%203.0957%207.4297%207.4015v.7599c0%204.3058-2.4484%207.4015-7.4297%207.4015-4.9812%200-7.4296-3.0676-7.4296-7.4015zm10.3565-1.0694c0-1.97-.8162-3.546-2.9269-3.546s-2.9268%201.576-2.9268%203.546v1.4071c0%201.97.8161%203.5459%202.9268%203.5459s2.9269-1.5759%202.9269-3.5459z'/%3e%3cpath%20d='m89.4648%2027.7952v-.7599c0-4.3058%202.4484-7.4015%207.4297-7.4015%204.9815%200%207.4295%203.0957%207.4295%207.4015v.7599c0%204.3058-2.448%207.4015-7.4295%207.4015-4.9813%200-7.4297-3.0676-7.4297-7.4015zm10.3565-1.0694c0-1.97-.8161-3.546-2.9268-3.546s-2.9268%201.576-2.9268%203.546v1.4071c0%201.97.8161%203.5459%202.9268%203.5459s2.9268-1.5759%202.9268-3.5459z'/%3e%3cpath%20d='m110.544%2027.0916%204.475-7.1482h4.784l-4.672%207.4015%204.869%207.5703h-4.813l-4.643-7.317v7.317h-4.503v-22.4578l4.503-.4221'/%3e%3c/g%3e%3c/svg%3e" alt="logo" />
+                              </figure>
+                           </div>
+                           <!-- Add more slides as needed -->
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                        <!-- Add Navigation -->
+                        <div class="swiper-navigation">
+                           <div class="swiper-button-next"></div>
+                           <div class="swiper-button-prev"></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!--Trusted worldwide end-->
+          <!--Features start-->
+         <section class="lg:py-20 py-5" id="features">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+               <div class="grid grid-cols-12 ">
+                  <div class="lg:col-span-8 lg:col-start-3 col-span-12">
+                     <div class="text-center mb-6 lg:mb-14">
+                        <small class="text-purple-500 uppercase tracking-wider font-semibold">features</small>
+                        <h2 class="my-3 text-3xl">Features to make you stand out</h2>
+                        <p class="mb-0 text-xl">Manage your projects from start to finish. With all of your projects in Block, you’ll always know who’s doing what, by when.</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="grid grid-cols-12 gap-10">
+                  <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                     <div class="flex flex-col  items-center md:items-start text-center md:text-left" >
+                        <div class="w-12 h-12 bg-purple-100 text-purple-500 rounded-lg flex items-center justify-center mb-5 border border-purple-400">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-square-rounded-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" /></svg>
+                        </div>
+
+                        <h4 class="text-lg mb-2">Tasks</h4>
+                        <p class="mb-0">Break work into manageable pieces for you and your team. Dui erat malesuada diam.</p>
+                     </div>
+                  </div>
+                      <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                     <div class="flex flex-col  items-center md:items-start text-center md:text-left" >
+                        <div class="w-12 h-12 bg-purple-100 text-purple-500 rounded-lg flex items-center justify-center mb-5 border border-purple-400">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-flag-3"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 14h14l-4.5 -4.5l4.5 -4.5h-14v16" /></svg>
+                        </div>
+
+                         <h4 class="text-lg mb-2">Milestones</h4>
+                        <p class="mb-0">Visualise significant checkpoints in your project to measure and share progress.</p>
+                     </div>
+                  </div>
+                      <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                     <div class="flex flex-col  items-center md:items-start text-center md:text-left" >
+                        <div class="w-12 h-12 bg-purple-100 text-purple-500 rounded-lg flex items-center justify-center mb-5 border border-purple-400">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg>
+                        </div>
+
+                        <h4 class="text-lg mb-2">Due dates and times</h4>
+                        <p class="mb-0">Specify the date and time something is due so everyone’s working off the same deadline.</p>
+                     </div>
+                  </div>
+                      <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                     <div class="flex flex-col  items-center md:items-start text-center md:text-left" >
+                        <div class="w-12 h-12 bg-purple-100 text-purple-500 rounded-lg flex items-center justify-center mb-5 border border-purple-400">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-article"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M7 8h10" /><path d="M7 12h10" /><path d="M7 16h10" /></svg>
+                        </div>
+
+                         <h4 class="text-lg mb-2">Custom templates</h4>
+                        <p class="mb-0">Create your own project templates so your team can quickly and easily kick off work.</p>
+                     </div>
+                  </div>
+                      <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                     <div class="flex flex-col  items-center md:items-start text-center md:text-left" >
+                        <div class="w-12 h-12 bg-purple-100 text-purple-500 rounded-lg flex items-center justify-center mb-5 border border-purple-400">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-paperclip"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" /></svg>
+                        </div>
+
+                         <h4 class="text-lg mb-2">Attachments</h4>
+                        <p class="mb-0">Add files from your computer, Dropbox, Box, or Google Drive to any task or conversation.</p>
+                     </div>
+                  </div>
+                      <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                     <div class="flex flex-col  items-center md:items-start text-center md:text-left" >
+                        <div class="w-12 h-12 bg-purple-100 text-purple-500 rounded-lg flex items-center justify-center mb-5 border border-purple-400">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+                        </div>
+
+                         <h4 class="text-lg mb-2">Teammate</h4>
+                        <p class="mb-0">Understand teammate workloads by viewing tasks assigned to them.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!--Features end-->
+       <!--Visualize & plan start-->
+<!--Collaborate start-->
+         <section class="lg:py-20 py-8" >
+           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+               <div class="grid grid-cols-12 items-center gap-6">
+                  <div class="md:col-span-6 col-span-12 lg:order-2 order-1" >
+                     <div class="relative rellax mb-7 lg:mb-0" data-rellax-percentage="1" data-rellax-speed="0.8" data-disable-parallax-down="md">
+                        <figure>
+                           <img src="./assets/images/saas-img-2.jpg" alt="landing" class="img-fluid rounded-xl" />
+                        </figure>
+                        <div class="flex flex-col absolute bottom-0 mb-8 mx-4">
+                           <img
+                              src="./assets/images/avatar-1.jpg"
+                              alt="avatar"
+                              class="h-12 w-12 rounded-full border-2 border-white   rellax"
+                              data-rellax-percentage="0.4"
+                              data-rellax-speed="0.4"
+                              data-disable-parallax-down="md" />
+                           <img
+                              src="./assets/images/avatar-2.jpg"
+                              alt="avatar"
+                              class="h-12 w-12 rounded-full border-2 border-white   rellax"
+                              data-rellax-percentage="0.5"
+                              data-rellax-speed="0.5"
+                              data-disable-parallax-down="md" />
+                           <img
+                              src="./assets/images/avatar-3.jpg"
+                              alt="avatar"
+                              class="h-12 w-12 rounded-full border-2 border-white  rellax"
+                              data-rellax-percentage="0.6"
+                              data-rellax-speed="0.6"
+                              data-disable-parallax-down="md" />
+                        </div>
+                     </div>
+                  </div>
+                  <div class="lg:col-start-8 lg:col-end-14 md:col-span-6 col-span-12 lg:order-2 order-1" >
+                     <div class="mt-md-5">
+                        <small class="text-purple-500 uppercase tracking-widest font-semibold">Collaborate</small>
+                        <div class="mb-6 mt-6">
+                           <h2 class="mb-3 text-3xl">Move team ideas to action, faster.</h2>
+                           <p class=" mb-0 text-xl">Collaborate and build total alignment on your project by adding comments to any task or document.</p>
+                        </div>
+                        <ul class=" mb-5">
+                           <li class="mb-2 flex">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-circle-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" /></svg>
+                              <span class="ms-2">Fusce ultricies velit fel dignissim</span>
+                           </li>
+                           <li class="mb-2 flex">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-circle-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" /></svg>
+                              <span class="ms-2">Suspendisse potenti. Mauris et ipsum odio.</span>
+                           </li>
+                           <li class="mb-2 flex">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-circle-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" /></svg>
+                              <span class="ms-2">Pellentesque imperdiet blandit pretium.</span>
+                           </li>
+                        </ul>
+
+                        <a href="#" class="text-purple-500 font-semibold inline-flex items-center hover:underline gap-3">
+                           Learn More
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M15 16l4 -4" /><path d="M15 8l4 4" /></svg>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+          </div>
+         </section>
+         <!--Collaborate end-->
+
+         <!--Visualize & plan end-->
+<!--Call to action start-->
+         <section class="my-16" id="contact">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
+                  <div class="grid grid-cols-12 bg-pattern bg-linear-to-b from-[#9b58ff] via-[#8837ff] to-[#7a20ff] rounded-xl lg:p-14 p-6 g-0 ">
+                    <div class="lg:col-span-8 lg:col-start-3 col-span-12 justify-center text-center">
+                      <div class="relative z-1 my-lg-5">
+                        <div class="mb-8 text-center">
+                           <h3 class="text-3xl text-white mb-1">Try our powerful work management tools</h3>
+                           <p class="mb-0 text-white">Sign up for a free two-week trial of Block today — no credit card required.</p>
+                        </div>
+                        <form class="grid grid-cols-12 gap-3  lg:mx-12" >
+                           <div class="md:col-span-7 md:col-start-2 col-span-12">
+                             <label for="notificationEmail" class="visually-hidden"></label>
+                             <input type="email" id="notificationEmail" class="block w-full rounded-lg border-gray-200 focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50" placeholder="Enter your business email" aria-label="Enter your business email" required />
+                            
+                           </div>
+                           <div class="md:col-span-4 col-span-12">
+                             <div class="grid justify-between">
+                               <button class="btn btn-dark" type="submit">Get notified for free</button>
+                             </div>
+                           </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+         </section>
+         <!--Call to action end-->
+
+    </main>
+<footer class="pt-7">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Footer 4 column -->
+      <div class="grid grid-cols-12 gap-6">
+         <div class="lg:col-span-9 col-span-12">
+            <div class="grid grid-cols-12 gap-6" id="ft-links">
+               <div class="lg:col-span-3 md:col-span-6 col-span-12">
+                  <div class="relative">
+                     <div class="mb-3 pb-2 flex justify-between border-b border-gray-200 lg:border-b-0">
+                        <h4 class="text-lg">Service</h4>
+                        
+                     </div>
+                     <div class=""  >
+                        <ul class=" mb-0">
+                           <li class="mb-2">
+                              <a href="./index.html" class="hover:text-purple-500 ">Web App Development</a>
+                           </li>
+                           <li class="mb-2">
+                              <a href="#!" class="hover:text-purple-500 ">Front End Development</a>
+                           </li>
+                           <li class="mb-2">
+                              <a href="#!" class="hover:text-purple-500 ">MVP Development</a>
+                           </li>
+                           <li class="mb-2">
+                              <a href="#!" class="hover:text-purple-500 ">Digital Marketing</a>
+                           </li>
+                           <li class="mb-2">
+                              <a href="#!" class="hover:text-purple-500 ">Content Writing</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="lg:col-span-3 md:col-span-6 col-span-12">
+                  <div>
+                     <div class="mb-3 pb-2 flex justify-between border-b border-gray-200 lg:border-b-0 relative">
+                        <h4 class="text-lg">About us</h4>
+                       
+                     </div>
+                     <div >
+                        <ul class=" mb-0">
+                           <li class="mb-2">
+                              <a href="#!" class="hover:text-purple-500 ">Case Studies</a>
+                           </li>
+                           <li class="mb-2">
+                              <a href="#!" class="hover:text-purple-500 ">Blog</a>
+                           </li>
+                           <li class="mb-2">
+                              <a href="#!" class="hover:text-purple-500 ">Services</a>
+                           </li>
+                           <li class="mb-2">
+                              <a href="#!" class="hover:text-purple-500 ">About</a>
+                           </li>
+                           <li class="mb-2">
+                              <a href="#!" class="hover:text-purple-500 ">Career</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="lg:col-span-3 md:col-span-6 col-span-12">
+                  <div class="mb-3 pb-2 flex justify-between border-b border-gray-200 lg:border-b-0 relative">
+                     <h4 class="text-lg">Technology</h4>
+                    
+                  </div>
+                  <div >
+                     <ul class=" mb-0">
+                        <li class="mb-2">
+                           <a href="./docs/index.html" class="hover:text-purple-500 ">Next.js</a>
+                        </li>
+                        <li class="mb-2">
+                           <a href="#!" class="hover:text-purple-500 ">Sanity</a>
+                        </li>
+                        <li class="mb-2">
+                           <a href="./changelog.html" class="hover:text-purple-500 ">Content ful</a>
+                        </li>
+                        <li class="mb-2">
+                           <a href="#!" class="hover:text-purple-500 ">Vercel</a>
+                        </li>
+                        <li class="mb-2">
+                           <a href="#!" class="hover:text-purple-500 ">Netlify</a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="lg:col-span-3 md:col-span-6 col-span-12">
+                  <div class="mb-3 pb-2 flex justify-between border-b border-gray-200 lg:border-b-0 relative">
+                     <h4 class="text-lg">Locations</h4>
+                    
+                  </div>
+                  <div>
+                     <ul class=" mb-0">
+                        <li class="mb-2">
+                           <a href="./docs/index.html" class="hover:text-purple-500 ">India</a>
+                        </li>
+                        <li class="mb-2">
+                           <a href="#!" class="hover:text-purple-500 ">Australia</a>
+                        </li>
+                        <li class="mb-2">
+                           <a href="./changelog.html" class="hover:text-purple-500 ">Brazil</a>
+                        </li>
+                        <li class="mb-2">
+                           <a href="#!" class="hover:text-purple-500 ">Canada</a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="lg:col-span-3 md:col-span-6 col-span-12">
+            <div class="me-7">
+               <h4 class="mb-4">Headquarters</h4>
+               <p class="">Codescandy, 412, Residency Rd, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka, India 560025</p>
+            </div>
+         </div>
+      </div>
+   </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+      <div class="grid grid-cols-12 items-center gap-6">
+         <div class="lg:col-span-3 col-span-12">
+            <a class="mb-4 mb-lg-0 block text-inverse" href="../index.html"><img src="./assets/images/logo.svg" alt="" /></a>
+         </div>
+         <div class="md:col-span-9 lg:col-span-6 col-span-12">
+            <div class="text-sm mb-3 mb-lg-0 text-lg-center">
+               Copyright © 2025
+
+               <span><a href="#">Block</a></span>
+               | Designed by
+               <span><a href="https://codescandy.com" target="_blank" class="text-purple-500">CodesCandy</a> • Distributed by <a href="https://themewagon.com" target="_blank" class="text-purple-500">ThemeWagon</a></span>
+            </div>
+         </div>
+         <div class="lg:col-span-3">
+            <div class="lg:text-end flex items-center lg:justify-end">
+
+               <div class="flex gap-4">
+                  <a href="#!" class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M16.5 7.5v.01" /></svg>
+                  </a>
+                  <a href="#!" class="">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg>
+                 </a>
+                  <a href="#!" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</footer>
+
+
+
+
+
+
+
+</body>
+
+</html>
