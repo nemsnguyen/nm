@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ngày Hội Gia Đình Việt Nam – Đăng Ký Tham Dự</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red:    #C0392B;
+      --gold:   #D4A017;
+      --cream:  #FDF6E3;
+      --deep:   #7B1A10;
+      --green:  #1A5C38;
+      --text:   #2C1810;
+      --light:  #FFF8EE;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 420px;
+      background: linear-gradient(135deg, var(--deep) 0%, var(--red) 55%, #8B2500 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px 80px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* decorative circles */
+    .hero::before, .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: .08;
+    }
+    .hero::before {
+      width: 600px; height: 600px;
+      background: var(--gold);
+      top: -200px; right: -150px;
+    }
+    .hero::after {
+      width: 400px; height: 400px;
+      background: var(--gold);
+      bottom: -180px; left: -100px;
+    }
+
+    /* lotus pattern overlay */
+    .lotus-row {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: space-around;
+      opacity: .07;
+      font-size: 64px;
+      pointer-events: none;
+      padding-top: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      animation: fadeDown .6s ease both;
+    }
+
+    .hero-flag {
+      font-size: 2.8rem;
+      margin-bottom: 8px;
+      animation: fadeDown .7s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      text-shadow: 0 2px 24px rgba(0,0,0,.4);
+      animation: fadeDown .8s ease both;
+    }
+    .hero h1 span { color: var(--gold); }
+
+    .hero-sub {
+      margin-top: 14px;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.85);
+      font-weight: 300;
+      letter-spacing: .04em;
+      animation: fadeDown 1s ease both;
+    }
+
+    .hero-divider {
+      margin: 28px auto 0;
+      width: 80px; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      border-radius: 2px;
+      animation: fadeDown 1.1s ease both;
+    }
+
+    /* ── WAVE ────────────────────────────────────────────────── */
+    .wave-wrap {
+      line-height: 0;
+      background: var(--cream);
+    }
+    .wave-wrap svg { display: block; width: 100%; }
+
+    /* ── SECTIONS ────────────────────────────────────────────── */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--deep);
+      margin-bottom: 28px;
+    }
+    .section-title .icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--red), var(--deep));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .section-title .line {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    /* ── FORM CARD ───────────────────────────────────────────── */
+    .form-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(192,57,43,.12), 0 2px 8px rgba(0,0,0,.06);
+      border: 1px solid rgba(212,160,23,.18);
+      overflow: hidden;
+      animation: fadeUp .7s ease both;
+    }
+
+    .form-card-header {
+      background: linear-gradient(90deg, var(--red), #E74C3C);
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .form-card-header .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-r { background: #ff6b6b; }
+    .dot-y { background: #ffd93d; }
+    .dot-g { background: #6bcb77; }
+    .form-card-header span {
+      margin-left: 8px;
+      color: rgba(255,255,255,.7);
+      font-size: .82rem;
+      letter-spacing: .06em;
+    }
+
+    .form-card iframe {
+      width: 100%;
+      border: none;
+      display: block;
+      min-height: 1420px;
+      background: var(--light);
+    }
+
+    /* ── LIST SECTION ────────────────────────────────────────── */
+    #danhsach { padding-top: 40px; }
+
+    .info-box {
+      background: linear-gradient(135deg, #fff8e1, #fff3cd);
+      border: 1px solid var(--gold);
+      border-left: 4px solid var(--gold);
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: .9rem;
+      color: #7a5c00;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .info-box .ii { font-size: 1.2rem; flex-shrink: 0; }
+
+    .table-wrap {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(192,57,43,.10), 0 2px 8px rgba(0,0,0,.05);
+      border: 1px solid rgba(212,160,23,.18);
+      overflow: hidden;
+    }
+
+    .table-head {
+      background: linear-gradient(90deg, var(--deep), var(--red));
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .table-head h3 {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .count-badge {
+      background: var(--gold);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .search-bar {
+      padding: 16px 20px;
+      border-bottom: 1px solid #f0e6d3;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 9px 14px;
+      border: 1.5px solid #e0d0b8;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: .9rem;
+      color: var(--text);
+      background: var(--light);
+      outline: none;
+      transition: border .2s;
+    }
+    .search-bar input:focus { border-color: var(--red); }
+    .search-bar button {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-family: inherit;
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .search-bar button:hover { background: var(--deep); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+    }
+    thead th {
+      background: #fdf0e8;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--deep);
+      font-size: .82rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-bottom: 2px solid #f0d9c8;
+    }
+    tbody tr {
+      border-bottom: 1px solid #f5ece0;
+      transition: background .15s;
+    }
+    tbody tr:hover { background: #fffaf4; }
+    tbody tr:last-child { border-bottom: none; }
+    td {
+      padding: 12px 16px;
+      color: var(--text);
+      vertical-align: middle;
+    }
+    .no-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--red), var(--deep));
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: .76rem;
+      font-weight: 600;
+    }
+    .tag-green { background: #d4edda; color: #155724; }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 20px;
+      color: #aaa;
+    }
+    .empty-state .big { font-size: 2.5rem; margin-bottom: 8px; }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--red);
+      font-size: .95rem;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .spinner {
+      width: 32px; height: 32px;
+      border: 3px solid #f0d9c8;
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+
+    .table-footer {
+      padding: 12px 20px;
+      background: #fdf8f0;
+      border-top: 1px solid #f0e6d3;
+      font-size: .82rem;
+      color: #888;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .refresh-btn {
+      background: none;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      padding: 5px 14px;
+      border-radius: 6px;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .refresh-btn:hover { background: var(--gold); color: #fff; }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    footer {
+      background: linear-gradient(135deg, var(--deep), #5A0F08);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 36px 20px;
+      font-size: .85rem;
+      margin-top: 20px;
+    }
+    footer strong { color: var(--gold); }
+    footer .flags { font-size: 1.6rem; margin-bottom: 8px; }
+
+    /* ── ANIMATIONS ──────────────────────────────────────────── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      thead th:nth-child(4),
+      td:nth-child(4) { display: none; }
+      .form-card iframe { min-height: 1600px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HERO ──────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="lotus-row" aria-hidden="true">
+    🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+  </div>
+  <div class="badge">🇻🇳 &nbsp;Vietnam Embassy</div>
+  <div class="hero-flag">🌺🏮🌺</div>
+  <h1>Ngày Hội<br/><span>Gia Đình Việt Nam</span></h1>
+  <p class="hero-sub">Cùng nhau giữ gìn bản sắc — Kết nối yêu thương</p>
+  <div class="hero-divider"></div>
+</header>
+
+<div class="wave-wrap">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z"
+          fill="#FDF6E3"/>
+  </svg>
+</div>
+
+<!-- ─── FORM ───────────────────────────────────────────────────── -->
+<main>
+  <section class="section" id="dangky">
+    <div class="section-title">
+      <div class="icon">📋</div>
+      Đăng Ký Tham Dự
+      <div class="line"></div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-card-header">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <span>Biểu mẫu đăng ký – Ngày Hội Gia Đình Việt Nam</span>
+      </div>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdT5RkJQVmR_aT1uYtqaS8XPu5VmqPmqGqOsOkXjGaYk0AYcA/viewform?embedded=true"
+        id="gform"
+        title="Biểu mẫu đăng ký"
+        allow="clipboard-write">
+        Đang tải biểu mẫu…
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ─── DANH SÁCH ──────────────────────────────────────────── -->
+  <section class="section" id="danhsach">
+    <div class="section-title">
+      <div class="icon">👨‍👩‍👧‍👦</div>
+      Danh Sách Đã Đăng Ký
+      <div class="line"></div>
+    </div>
+
+    <div class="info-box">
+      <span class="ii">ℹ️</span>
+      <div>
+        Danh sách được cập nhật tự động từ Google Sheets. Nếu bảng hiển thị "Không có dữ liệu", vui lòng nhấn <strong>Làm mới</strong> hoặc kiểm tra lại cài đặt chia sẻ của Sheet (Chia sẻ → Bất kỳ ai có đường link → Người xem).
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="table-head">
+        <h3>🌸 Danh sách tham dự <span class="count-badge" id="totalCount">–</span></h3>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="🔍  Tìm theo tên, email…" oninput="filterTable()" />
+        <button onclick="loadData()">🔄 Làm mới</button>
+      </div>
+
+      <div id="tableContainer">
+        <div class="loading">
+          <div class="spinner"></div>
+          Đang tải danh sách…
+        </div>
+      </div>
+
+      <div class="table-footer">
+        <span id="footerNote">Đang tải dữ liệu…</span>
+        <button class="refresh-btn" onclick="loadData()">🔄 Cập nhật</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+  <div class="flags">🇻🇳 🏮 🌸</div>
+  <div>
+    <strong>Đại sứ quán Việt Nam</strong> — Ngày Hội Gia Đình Việt Nam<br/>
+    <a href="https://langviet.vietnamembassy.us/" style="color:var(--gold);">langviet.vietnamembassy.us</a>
+  </div>
+</footer>
+
+<script>
+  // ── CONFIG ────────────────────────────────────────────────────
+  // Sheet ID extracted from the provided link
+  const SHEET_ID = '1Tekgda1l08c-S74NS77yNDQHn4kUjV05unM6GKzrTsk';
+  const GID      = '791549140';
+
+  // Google Form embed ID (viewform embed)
+  // Convert /edit URL to /viewform?embedded=true
+  const FORM_EMBED = 'https://docs.google.com/forms/d/1_fzjirMaHkb9UIvdK8HB9PROeT5gB2wPgCD1zsDGZzo/viewform?embedded=true';
+
+  document.getElementById('gform').src = FORM_EMBED;
+
+  // ── COLUMN LABELS ─────────────────────────────────────────────
+  // Adjust these to match actual Sheet column headers
+  const COL_LABELS = {
+    timestamp: 'Thời gian',
+    name:      'Họ và Tên',
+    email:     'Email',
+    phone:     'Điện thoại',
+    group:     'Số thành viên',
+    note:      'Ghi chú',
+  };
+
+  let allRows = [];
+
+  // ── LOAD DATA ─────────────────────────────────────────────────
+  async function loadData() {
+    document.getElementById('tableContainer').innerHTML = `
+      <div class="loading">
+        <div class="spinner"></div>
+        Đang tải danh sách…
+      </div>`;
+    document.getElementById('totalCount').textContent = '–';
+    document.getElementById('footerNote').textContent = 'Đang tải dữ liệu…';
+
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${GID}`;
+    try {
+      const res  = await fetch(url);
+      const text = await res.text();
+      // Strip Google's JSONP wrapper
+      const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+
+      const cols = json.table.cols.map(c => c.label || '');
+      const rows = json.table.rows || [];
+
+      allRows = rows.map(r => r.c ? r.c.map(cell => cell ? (cell.f || cell.v || '') : '') : []);
+
+      renderTable(cols, allRows);
+      document.getElementById('totalCount').textContent = allRows.length;
+      const now = new Date();
+      document.getElementById('footerNote').textContent =
+        `Cập nhật lúc ${now.toLocaleTimeString('vi-VN')} – ${allRows.length} người đã đăng ký`;
+
+    } catch (e) {
+      document.getElementById('tableContainer').innerHTML = `
+        <div class="empty-state">
+          <div class="big">⚠️</div>
+          <div style="font-weight:600;color:var(--red);margin-bottom:8px;">Không tải được dữ liệu</div>
+          <div style="font-size:.85rem;max-width:360px;margin:0 auto;">
+            Vui lòng kiểm tra Sheet đã được chia sẻ công khai chưa,<br/>
+            hoặc thử lại sau vài giây.
+          </div>
+        </div>`;
+      document.getElementById('footerNote').textContent = 'Lỗi khi tải dữ liệu';
+    }
+  }
+
+  // ── RENDER ────────────────────────────────────────────────────
+  function renderTable(cols, rows) {
+    if (!rows.length) {
+      document.getElementById('tableContainer').innerHTML = `
+        <div class="empty-state">
+          <div class="big">🌸</div>
+          <div>Chưa có người đăng ký. Hãy là người đầu tiên!</div>
+        </div>`;
+      return;
+    }
+
+    // Show up to 6 columns, skip empty-label columns
+    const visibleCols = cols
+      .map((l, i) => ({ label: l, idx: i }))
+      .filter(c => c.label && c.label.trim())
+      .slice(0, 6);
+
+    const head = visibleCols.map(c =>
+      `<th>${c.label}</th>`
+    ).join('');
+
+    const body = rows.map((row, ri) => {
+      const cells = visibleCols.map((c, ci) => {
+        const val = row[c.idx] ?? '';
+        if (ci === 0) return `<td><span class="no-badge">${ri + 1}</span></td>`;
+        // Highlight 2nd column (likely name) boldly
+        if (ci === 1) return `<td><strong>${val}</strong></td>`;
+        return `<td>${val}</td>`;
+      }).join('');
+      return `<tr>${cells}</tr>`;
+    }).join('');
+
+    document.getElementById('tableContainer').innerHTML = `
+      <div style="overflow-x:auto;">
+        <table>
+          <thead><tr><th>#</th>${head.replace(/<th>.*?<\/th>/, '')}</tr></thead>
+          <tbody>${body}</tbody>
+        </table>
+      </div>`;
+  }
+
+  // ── FILTER ────────────────────────────────────────────────────
+  function filterTable() {
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    if (!q) { loadData(); return; }
+
+    const filtered = allRows.filter(row =>
+      row.some(cell => String(cell).toLowerCase().includes(q))
+    );
+
+    const rows = document.querySelectorAll('tbody tr');
+    // Re-filter DOM
+    const allTr = document.querySelectorAll('tbody tr');
+    allTr.forEach(tr => {
+      const text = tr.textContent.toLowerCase();
+      tr.style.display = text.includes(q) ? '' : 'none';
+    });
+  }
+
+  // ── INIT ──────────────────────────────────────────────────────
+  loadData();
+  // Auto-refresh every 90 seconds
+  setInterval(loadData, 90000);
+</script>
+</body>
+</html>
